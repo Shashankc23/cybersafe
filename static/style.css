@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f9ff;
+    color: #0a0a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8eef8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 17px;
+    color: #0057ff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+    background-color: #f0f4ff;
+    color: #0057ff;
+}
+
+/* ─── CONTAINER ─── */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+}
+
+/* ─── HERO ─── */
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 4em;
+    font-weight: 800;
+    color: #0a0a1a;
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.15em;
+    color: #555;
+    max-width: 540px;
+    margin: 0 auto 32px auto;
+}
+
+/* ─── HEADINGS ─── */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #0057ff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #0a0a1a;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #0057ff;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #3a3a5c;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ─── CARDS ─── */
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 87, 255, 0.08);
+}
+
+.lesson-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 16px;
+    border-left: 5px solid #0057ff;
+    box-shadow: 0 2px 12px rgba(0, 87, 255, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 87, 255, 0.15);
+}
+
+.lesson-card h2 {
+    font-size: 1.1em;
+    color: #0057ff;
+    margin-bottom: 8px;
+}
+
+.lesson-card h3 { color: #0057ff; }
+
+.lesson-card ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.lesson-card li {
+    margin-bottom: 6px;
+    color: #3a3a5c;
+}
+
+/* ─── PRE ─── */
+pre {
+    background-color: #eef3ff;
+    border-left: 4px solid #0057ff;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: #0a0a1a;
+    margin-bottom: 20px;
+}
+
+/* ─── BUTTONS ─── */
+button {
+    background-color: #0057ff;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    margin: 8px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 87, 255, 0.35);
+}
+
+.legit-btn {
+    background-color: #00e676;
+    color: #0a0a1a;
+}
+
+/* ─── LINKS ─── */
+a {
+    color: #0057ff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover { color: #0030cc; }
+
+.btn-link {
+    display: inline-block;
+    background-color: #0057ff;
+    color: white;
+    padding: 13px 32px;
+    border-radius: 50px;
+    margin: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-link:hover {
+    transform: scale(1.05);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 87, 255, 0.35);
+}
+
+.btn-link-white {
+    display: inline-block;
+    background-color: white;
+    color: #0057ff;
+    padding: 13px 32px;
+    border-radius: 50px;
+    margin: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-link-white:hover {
+    transform: scale(1.05);
+    color: #0057ff;
+}
+
+/* ─── FEEDBACK ─── */
+.correct { color: #00b341; font-weight: bold; }
+.wrong { color: #e53935; font-weight: bold; }
+
+.progress {
+    color: #0057ff;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* ─── THEME TOGGLE ─── */
+#theme-toggle {
+    background: #f0f4ff;
+    border: 2px solid #0057ff;
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin: 0;
+}
+
+#theme-toggle:hover {
+    box-shadow: 0 4px 12px rgba(0, 87, 255, 0.25);
+    transform: none;
+}
+
+/* ─── LINK CARDS ─── */
+a.lesson-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ─── FOOTER ─── */
+footer {
+    background-color: #0a0a1a;
+    color: #aaaaaa;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer a {
+    color: #aaaaaa;
+    margin: 0 10px;
+    font-weight: 400;
+}
+
+footer a:hover { color: white; }
+
+/* ─── TIP BOX ─── */
+.tip-box {
+    background: #f0f4ff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+/* ─── QUIZ ─── */
+.quiz-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.quiz-badges {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.badge {
+    background: #e8eef8;
+    color: #0057ff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quiz-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 17px;
+    border-radius: 14px;
+    background: #0057ff;
+    color: white;
+    border: 2px solid #0057ff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    transition: transform .25s, box-shadow .25s;
+    margin: 0;
+}
+
+.quiz-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.12);
+}
+
+.quiz-btn-outline {
+    background: white;
+    color: #0057ff;
+}
+
+.quiz-btn-outline:hover {
+    background: #f0f4ff;
+}
+
+/* ─── DARK MODE ─── */
+body.dark {
+    background-color: #0f0f0f;
+    color: #f1f1f1;
+}
+
+body.dark nav {
+    background-color: #181818;
+    border-bottom-color: #333;
+}
+
+body.dark nav a { color: #aaaaaa; }
+body.dark nav a:hover {
+    background-color: #303030;
+    color: #3ea6ff;
+}
+
+body.dark .nav-brand { color: #3ea6ff; }
+
+body.dark h1 { color: #3ea6ff; }
+body.dark h2 { color: #f1f1f1; }
+body.dark h3 { color: #3ea6ff; }
+body.dark p { color: #aaaaaa; }
+
+body.dark .card { background-color: #212121; }
+
+body.dark .lesson-card {
+    background-color: #212121;
+    border-left-color: #3ea6ff;
+}
+
+body.dark .lesson-card h2,
+body.dark .lesson-card h3 { color: #3ea6ff; }
+body.dark .lesson-card li { color: #aaaaaa; }
+
+body.dark pre {
+    background-color: #212121;
+    color: #f1f1f1;
+    border-left-color: #3ea6ff;
+}
+
+body.dark #theme-toggle {
+    background-color: #212121;
+    border-color: #3ea6ff;
+    color: #f1f1f1;
+}
+
+body.dark footer { background-color: #000000; }
+
+body.dark #mascot { mix-blend-mode: normal; }
+
+body.dark .tip-box {
+    background: #1e1e1e;    
+    color: #f1f1f1;
+}
+
+body.dark .quiz-btn-outline {
+    background: #212121;
+    color: #3ea6ff;
+    border-color: #3ea6ff;
+}
+
+body.dark .badge {
+    background: #212121;
+    color: #3ea6ff;
+}
+
+body.dark .email-card {
+    background: #1e1e1e !important;
+    border-color: #333 !important;
+}
+
+body.dark .email-card,
+body.dark .email-card * {
+    color: #f1f1f1 !important;
+}
+
+body.dark .result-box {
+    background: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #f1f1f1 !important;
+}
+
+body.dark .result-box p {
+    color: #f1f1f1 !important;
+}

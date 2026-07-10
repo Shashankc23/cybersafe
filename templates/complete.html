@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="quiz-container">
+
+    <!-- Celebration -->
+    <div style="text-align:center; margin-bottom:32px;">
+        <div style="font-size:70px; margin-bottom:16px;">🎉</div>
+
+        <h1 style="margin-bottom:10px;">Module Complete!</h1>
+
+        <p style="color:#666; font-size:18px;">
+            Great work! You've finished this cybersecurity lesson.
+        </p>
+    </div>
+
+    <!-- Score Card -->
+    <div class="lesson-card" style="padding:40px; border-left:none; text-align:center;">
+
+        <div style="
+            width:120px;
+            height:120px;
+            margin:0 auto 24px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#5d2cff,#0057ff);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-size:34px;
+            font-weight:700;
+            box-shadow:0 12px 30px rgba(93,44,255,.25);
+        ">
+            {{ score }}/50
+        </div>
+
+        {% if score >= 50 %}
+            <h2 style="color:#16a34a;">🏆 Perfect Score!</h2>
+            <p>You spotted every trick. You're becoming a cybersecurity expert!</p>
+
+        {% elif score >= 40 %}
+            <h2 style="color:#2563eb;">⭐ Awesome Job!</h2>
+            <p>You did really well and caught almost every scam.</p>
+
+        {% elif score >= 30 %}
+            <h2 style="color:#f59e0b;">👍 Nice Work!</h2>
+            <p>You understood most of the lesson. A little more practice and you'll master it.</p>
+
+        {% else %}
+            <h2 style="color:#ef4444;">💪 Keep Practicing!</h2>
+            <p>Everyone starts somewhere. Try the lesson again and you'll improve!</p>
+        {% endif %}
+
+        <div style="
+            margin:30px 0;
+            padding:18px;
+            background:#f6f8ff;
+            border-radius:14px;
+            font-weight:600;
+            color:#555;
+        ">
+            🧠 Every quiz you finish makes you better at spotting scams online.
+        </div>
+
+        <div style="
+            display:flex;
+            gap:16px;
+            justify-content:center;
+            flex-wrap:wrap;
+        ">
+
+            <a href="{{ retry_url }}" class="quiz-btn quiz-btn-outline" style="text-decoration:none;">
+                🔄 Try Again
+            </a>
+
+            <a href="{{ next_url }}" class="quiz-btn" style="text-decoration:none;">
+                🚀 Next Module
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

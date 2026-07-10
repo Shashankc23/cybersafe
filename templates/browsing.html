@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="quiz-container">
+
+    <!-- Top Badges -->
+    <div class="quiz-badges">
+        <span class="badge">📖 Question {{ question_number }} / {{ total_questions }}</span>
+        <span class="badge">⭐ Score: {{ score }}</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div style="background: #e8eef8; border-radius: 50px; height: 8px; margin: 16px 0 30px 0;">
+        <div style="background: #0057ff; height: 8px; border-radius: 50px; width: {{ (question_number / total_questions * 100) | int }}%; transition: width .4s ease;"></div>
+    </div>
+
+    <!-- Title -->
+    <h1>🌐 Safe Browsing Quiz</h1>
+    <p>Read the website carefully. Decide whether it's safe or sketchy before making your choice.</p>
+
+    <!-- Scenario Card -->
+    <div style="background: transparent; border-radius: 18px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border: 1px solid #ececf7; margin: 24px 0;">
+
+        <div style="font-size: 13px; font-weight: 700; color: #0057ff; margin-bottom: 16px; letter-spacing: .5px;">
+            🌐 WEBSITE
+        </div>
+
+        <div style="font-size: 17px; line-height: 1.8;">
+            {{ question.scenario }}
+        </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <form action="/check_browsing" method="POST">
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+
+            <button name="answer" value="safe" class="quiz-btn">
+                ✅ It's Safe
+            </button>
+
+            <button name="answer" value="sketchy" class="quiz-btn quiz-btn-outline">
+                🚨 It's Sketchy
+            </button>
+
+        </div>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="quiz-container">
+
+    <!-- Top Badges -->
+    <div class="quiz-badges">
+        <span class="badge">📖 Question {{ question_number }} / {{ total_questions }}</span>
+        <span class="badge">⭐ Score: {{ score }}</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div style="background: #e8eef8; border-radius: 50px; height: 8px; margin: 16px 0 30px 0;">
+        <div style="background: #0057ff; height: 8px; border-radius: 50px; width: {{ (question_number / total_questions * 100) | int }}%; transition: width .4s ease;"></div>
+    </div>
+
+    <!-- Title -->
+    <h1>🪝 Phishing Quiz</h1>
+    <p>Read the email below carefully. When you're ready, decide whether it's real or fake.</p>
+
+    <!-- Email Card -->
+    <div style="background: transparent; border-radius: 18px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border: 1px solid #ececf7; margin: 24px 0;">
+        <div style="font-size: 13px; font-weight: 700; color: #0057ff; margin-bottom: 16px; letter-spacing: 0.5px;">📧 SUSPICIOUS EMAIL</div>
+        <div style="border-bottom: 1px solid #ececf7; padding-bottom: 14px; margin-bottom: 14px;">
+            <div style="font-family: monospace; font-size: 15px; line-height: 2;">
+                <span style="color: #888; font-size: 13px;">FROM</span><br>
+                <strong>{{ question.email.split('\n')[0].replace('From: ', '') }}</strong>
+            </div>
+            <div style="font-family: monospace; font-size: 15px; line-height: 2; margin-top: 8px;">
+                <span style="color: #888; font-size: 13px;">SUBJECT</span><br>
+                <strong>{{ question.email.split('\n')[1].replace('Subject: ', '') }}</strong>
+            </div>
+        </div>
+        <div style="font-size: 17px; line-height: 1.8;">{{ question.email.split('\n')[2:] | join('\n') }}</div>
+    </div>
+
+    <!-- Buttons -->
+    <form action="/check" method="POST">
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+            <button name="answer" value="phishing" class="quiz-btn">
+                🚨 It's Fake
+            </button>
+            <button name="answer" value="legit" class="quiz-btn quiz-btn-outline">
+                ✅ It's Real
+            </button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Header -->
+    <div style="padding-top: 60px; margin-bottom: 50px; text-align: center;">
+        <h1>🌐 Safe Browsing</h1>
+        <h2>Stay Sharp Online!</h2>
+        <p>Learn three simple habits that can help you browse the internet safely and avoid common online traps.</p>
+    </div>
+
+    <!-- Thing 1 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>🔍 Thing 1: Always Check the Address Bar</h2>
+
+        <p>
+            Scammers build websites that look almost identical to real ones,
+            using the same logos, colours, and layouts.
+        </p>
+
+        <p>
+            The address bar is often the easiest way to spot the fake.
+        </p>
+
+        <div class="tip-box">
+            <strong>💡 Remember</strong><br>
+            <strong>Real:</strong> <code>bbc.com</code> or <code>bbc.co.uk</code><br>
+            <strong>Fake:</strong> <code>bbc-news-today.info</code><br><br>
+
+            Always make sure the website address matches the company you're trying to visit.
+        </div>
+    </div>
+
+    <!-- Thing 2 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>🔒 Thing 2: HTTPS and the Padlock Matter</h2>
+
+        <p>
+            Safe websites usually begin with
+            <strong>https://</strong> and display a padlock icon in the address bar.
+        </p>
+
+        <p>
+            This means your information is encrypted while it's being sent over the internet.
+        </p>
+
+        <div class="tip-box">
+            <strong>💡 Remember</strong><br>
+            Look for <strong>https://</strong> 🔒 before entering passwords or personal information.
+            If a site only uses <strong>http://</strong>, be extra careful.
+        </div>
+    </div>
+
+    <!-- Thing 3 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 50px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>🚨 Thing 3: Watch Out for Downloads and Fake Pop-ups</h2>
+
+        <p>
+            Some websites try to scare or trick you into downloading harmful software.
+        </p>
+
+        <ul>
+            <li>A file starts downloading without you clicking anything.</li>
+            <li>A pop-up says <strong>"Virus Detected! Call this number now!"</strong></li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>⚠️ Watch Out</strong><br>
+            Close the tab, don't open unexpected downloads,
+            and tell a trusted adult if something seems suspicious.
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div style="text-align: center; margin-bottom: 80px;">
+        <a href="/browsing/quiz" class="btn-link">
+            I'm Ready! Let's Go! 🕵️
+        </a>
+    </div>
+
+</div>
+{% endblock %}

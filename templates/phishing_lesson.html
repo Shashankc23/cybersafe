@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Header -->
+    <div style="padding-top: 60px; margin-bottom: 50px; text-align: center;">
+        <h1>🪝 Phishing</h1>
+        <h2>Don't Get Hooked!</h2>
+        <p>Learn the three most common tricks scammers use before testing your skills.</p>
+    </div>
+
+    <!-- Trick 1 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>🎭 Trick 1: Pretending to Be Someone Else</h2>
+
+        <p>
+            Phishing is when a scammer pretends to be a real company or person —
+            like Roblox, YouTube, or even your school — to trick you into giving
+            away information.
+        </p>
+
+        <p>
+            They copy logos, colours, and names to look real. But they are not.
+        </p>
+
+        <div class="tip-box">
+            <strong>💡 Remember</strong><br>
+            Always ask yourself:
+            <strong>"Did I expect this message?"</strong>
+        </div>
+    </div>
+
+    <!-- Trick 2 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>🔗 Trick 2: Fake Website Addresses</h2>
+
+        <p>
+            Scammers use website addresses that look almost right, but have a
+            sneaky difference.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Real:</strong> roblox.com
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <strong>Fake:</strong> r0blox.com
+                <em>(zero instead of the letter o!)</em>
+            </li>
+
+            <li>
+                <strong>Real:</strong> minecraft.net
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <strong>Fake:</strong> minecraft-helpdesk.net
+            </li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>💡 Remember</strong><br>
+            Always check the address bar before clicking a link or entering a password.
+        </div>
+    </div>
+
+    <!-- Trick 3 -->
+    <div class="lesson-card" style="padding: 32px; margin-bottom: 50px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
+        <h2>⏰ Trick 3: Fake Urgency</h2>
+
+        <p>
+            Scammers try to rush you so you don't have time to think.
+            Watch out for messages like:
+        </p>
+
+        <ul>
+            <li>"Your account will be DELETED in 1 hour!"</li>
+            <li>"Claim your prize RIGHT NOW before it expires!"</li>
+            <li>"Act immediately or lose access forever!"</li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>⚠️ Watch Out</strong><br>
+            If a message makes you panic or rush,
+            <strong>slow down and tell a trusted adult.</strong>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div style="text-align: center; margin-bottom: 80px;">
+        <a href="/phishing/quiz" class="btn-link">
+            I'm Ready! Let's Go! 🕵️
+        </a>
+    </div>
+
+</div>
+{% endblock %}

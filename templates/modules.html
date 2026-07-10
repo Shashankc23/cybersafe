@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 40px;">
+        <h1>Choose a Module</h1>
+        <p>Pick a topic below and build the skills you need to stay safe online.</p>
+    </div>
+
+    <a href="/phishing" class="lesson-card" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
+        <div>
+            <h2>🪝 Phishing</h2>
+            <p style="margin: 0;">Spot fake emails, scam texts, and suspicious websites before they fool you.</p>
+        </div>
+        <span style="font-size: 1.5em; color: #0057ff;">→</span>
+    </a>
+
+    <a href="/passwords" class="lesson-card" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
+        <div>
+            <h2>🔐 Passwords</h2>
+            <p style="margin: 0;">Learn how to create strong passwords and protect every account you use.</p>
+        </div>
+        <span style="font-size: 1.5em; color: #0057ff;">→</span>
+    </a>
+
+    <a href="/browsing" class="lesson-card" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
+        <div>
+            <h2>🌐 Safe Browsing</h2>
+            <p style="margin: 0;">Browse the internet safely by recognizing risky websites and downloads.</p>
+        </div>
+        <span style="font-size: 1.5em; color: #0057ff;">→</span>
+    </a>
+
+    <a href="/privacy" class="lesson-card" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
+        <div>
+            <h2>👁️ Privacy</h2>
+            <p style="margin: 0;">Protect your personal information and control what you share online.</p>
+        </div>
+        <span style="font-size: 1.5em; color: #0057ff;">→</span>
+    </a>
+
+    <a href="/social" class="lesson-card" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
+        <div>
+            <h2>🎭 Social Engineering</h2>
+            <p style="margin: 0;">Recognize manipulation tactics scammers use to gain your trust.</p>
+        </div>
+        <span style="font-size: 1.5em; color: #0057ff;">→</span>
+    </a>
+
+</div>
+{% endblock %}
