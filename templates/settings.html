@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card">
-    <h1>Settings</h1>
-    <p>Choose your language:</p>
-    <a href="/set_language/en" class="btn-link">English</a>
-    <a href="/set_language/es" class="btn-link">Espanol</a>
+<div class="container">
+    <div style="padding-top: 60px; margin-bottom: 30px;">
+        <h1>Settings</h1>
+    </div>
+
+    <div class="lesson-card" style="border-left: none; margin-bottom: 20px;">
+        <h2>🌗 Appearance</h2>
+        <p>Use the moon/sun button in the top right to switch between light and dark mode. Your choice is saved on this device.</p>
+    </div>
+
+    <div class="lesson-card" style="border-left: none; margin-bottom: 20px;">
+        <h2>📊 Your Progress</h2>
+        <p>CyberSafe never asks you to sign in or share personal information. Your scores are saved only in this browser.</p>
+        <button onclick="handleReset()" class="quiz-btn quiz-btn-outline" style="width: auto;">🗑️ Reset My Progress</button>
+    </div>
 </div>
+<script>
+    function handleReset() {
+        if (confirm('This will erase your saved scores on this device. Continue?')) {
+            resetProgress()
+            alert('Your progress has been reset!')
+        }
+    }
+</script>
 {% endblock %}

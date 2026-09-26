@@ -1,8 +1,9 @@
+import os
+
 from flask import Flask, render_template, request, session, redirect
 
-
 app = Flask(__name__)
-app.secret_key = 'cybersafe123'
+app.secret_key = os.environ.get('SECRET_KEY') or os.urandom(24)
 
 questions = [
     {
@@ -46,7 +47,7 @@ password_questions = [
     {
         "password": "minecraft2014",
         "answer": "weak",
-        "explanation": "Using your favourite game plus a year (often your birth year!) is very easy for someone who knows you to guess. Hackers also try popular game names automatically."
+        "explanation": "Using your favorite game plus a year (often your birth year!) is very easy for someone who knows you to guess. Hackers also try popular game names automatically."
     },
     {
         "password": "MyD0g$N@medMax!",
@@ -77,14 +78,14 @@ browsing_questions = [
         "explanation": "This is a fake virus warning — one of the oldest tricks on the internet. Real antivirus software does NOT show pop-ups asking you to call a phone number. These scams try to scare you into calling. Press ESC or close the browser tab. Do NOT call the number."
     },
     {
-        "scenario": "You search for 'BBC News' and click the first result. The page looks exactly like BBC News, but the address bar shows: http://bbc-news-today.info/home",
+        "scenario": "You search for 'Roblox' and click the first result. The page looks exactly like Roblox, but the address bar shows: http://roblox-play-now.info/home",
         "answer": "sketchy",
-        "explanation": "The real BBC website is bbc.co.uk or bbc.com — not 'bbc-news-today.info'. Scammers copy the look of real websites to trick you. Always check the address bar matches the real website name before reading or clicking anything."
+        "explanation": "The real Roblox website is roblox.com — not 'roblox-play-now.info'. Scammers copy the look of real websites to trick you. Always check the address bar matches the real website name before typing anything or clicking around."
     },
     {
-        "scenario": "You visit your school's homework portal. The address bar shows: https://homework.myschool.edu and there is a padlock icon next to the address.",
+        "scenario": "You visit your school's homework portal. The address bar shows: https://homework.myschool.edu and there is a little padlock icon next to the address.",
         "answer": "safe",
-        "explanation": "HTTPS means the connection is encrypted — your data is protected on its way to the website. The padlock icon confirms this. A real school domain (.edu) with HTTPS and a padlock is a good sign you are in the right place."
+        "explanation": "The padlock means the website locks up your information like a locked diary, so no one else can peek at it while it travels to the site. A real school address (.edu) with the padlock is a good sign you're in the right place."
     },
 ]
 
@@ -144,199 +145,142 @@ social_engineering_questions = [
     },
 ]
 
+MODULES = {
+    'phishing': {
+        'questions': questions,
+        'lesson_template': 'phishing_lesson.html',
+        'quiz_template': 'phishing.html',
+        'lesson_url': '/phishing',
+        'quiz_url': '/phishing/quiz',
+        'check_url': '/check',
+        'complete_url': '/complete',
+        'next_url': '/passwords',
+    },
+    'password': {
+        'questions': password_questions,
+        'lesson_template': 'passwords_lesson.html',
+        'quiz_template': 'passwords.html',
+        'lesson_url': '/passwords',
+        'quiz_url': '/passwords/quiz',
+        'check_url': '/check_password',
+        'complete_url': '/complete_password',
+        'next_url': '/browsing',
+    },
+    'browsing': {
+        'questions': browsing_questions,
+        'lesson_template': 'browsing_lesson.html',
+        'quiz_template': 'browsing.html',
+        'lesson_url': '/browsing',
+        'quiz_url': '/browsing/quiz',
+        'check_url': '/check_browsing',
+        'complete_url': '/complete_browsing',
+        'next_url': '/privacy',
+    },
+    'privacy': {
+        'questions': privacy_questions,
+        'lesson_template': 'privacy_lesson.html',
+        'quiz_template': 'privacy.html',
+        'lesson_url': '/privacy',
+        'quiz_url': '/privacy/quiz',
+        'check_url': '/check_privacy',
+        'complete_url': '/complete_privacy',
+        'next_url': '/social',
+    },
+    'social': {
+        'questions': social_engineering_questions,
+        'lesson_template': 'social_lesson.html',
+        'quiz_template': 'social.html',
+        'lesson_url': '/social',
+        'quiz_url': '/social/quiz',
+        'check_url': '/check_social',
+        'complete_url': '/complete_social',
+        'next_url': '/',
+    },
+}
 
 
-
-@app.route('/phishing')
-def phishing_lesson():
-    return render_template('phishing_lesson.html')
-
-@app.route('/phishing/quiz') #When someone visits phishing page, run function below
-def phishing():
-    index = session.get('phishing_index', 0)
-    question = questions[index]
-    return render_template('phishing.html', question=question, score=session.get('phishing_score', 0), question_number=index+1, total_questions=len(questions))
-
-@app.route('/check', methods=['POST'])
-def check():
-    index = session.get('phishing_index', 0)
-    question = questions[index]
-    if request.form['answer'] == question['answer']:
-        result = 'Correct'
-        score = session.get('phishing_score', 0)
-        score = score + 10
-        session['phishing_score'] = score
-    else:
-        result = 'Wrong'
-    next_index = index + 1
-    is_last = next_index == len(questions)
-    if is_last:
-        session['phishing_final_score'] = session.get('phishing_score', 0)
-        session['phishing_index'] = 0
-        session['phishing_score'] = 0
-    else:
-        session['phishing_index'] = next_index
-    return render_template('result.html', result=result, explanation=question['explanation'], score=session.get('phishing_final_score' if is_last else 'phishing_score', 0), is_last=is_last, complete_url='/complete', continue_url='/phishing/quiz')
+def make_lesson_view(config):
+    def view():
+        return render_template(config['lesson_template'])
+    return view
 
 
-@app.route('/complete')
-def complete():
-    score = session.get('phishing_final_score', 0)
-    return render_template('complete.html', score=score, retry_url='/phishing/quiz', next_url='/passwords')
-
-@app.route('/passwords')
-def passwords_lesson():
-    return render_template('passwords_lesson.html')
-
-@app.route('/passwords/quiz')
-def passwords():
-    index = session.get('password_index', 0)
-    question = password_questions[index]
-    return render_template('passwords.html', question=question, score=session.get('password_score', 0), question_number=index+1, total_questions=len(password_questions))
-
-@app.route('/check_password', methods=['POST'])
-def check_password():
-    index = session.get('password_index', 0)
-    question = password_questions[index]
-    if request.form['answer'] == question['answer']:
-        result = 'Correct'
-        score = session.get('password_score', 0)
-        score = score + 10
-        session['password_score'] = score
-    else:
-        result = 'Wrong'
-    next_index = index + 1
-    is_last = next_index == len(password_questions)
-    if is_last:
-        session['password_final_score'] = session.get('password_score', 0)
-        session['password_index'] = 0
-        session['password_score'] = 0
-    else:
-        session['password_index'] = next_index
-    return render_template('result.html', result=result, explanation=question['explanation'], score=session.get('password_final_score' if is_last else 'password_score', 0), is_last=is_last, complete_url='/complete_password', continue_url='/passwords/quiz')
-
-@app.route('/complete_password')
-def complete_password():
-    score = session.get('password_final_score', 0)
-    return render_template('complete.html', score=score, retry_url='/passwords/quiz', next_url='/browsing')
-
-@app.route('/browsing')
-def browsing_lesson():
-    return render_template('browsing_lesson.html')
-
-@app.route('/browsing/quiz')
-def browsing():
-    index = session.get('browsing_index', 0)
-    question = browsing_questions[index]
-    return render_template('browsing.html', question=question, score=session.get('browsing_score', 0), question_number=index+1, total_questions=len(browsing_questions))
-
-@app.route('/check_browsing', methods=['POST'])
-def check_browsing():
-    index = session.get('browsing_index', 0)
-    question = browsing_questions[index]
-    if request.form['answer'] == question['answer']:
-        result = 'Correct'
-        score = session.get('browsing_score', 0)
-        score = score + 10
-        session['browsing_score'] = score
-    else:
-        result = 'Wrong'
-    next_index = index + 1
-    is_last = next_index == len(browsing_questions)
-    if is_last:
-        session['browsing_final_score'] = session.get('browsing_score', 0)
-        session['browsing_index'] = 0
-        session['browsing_score'] = 0
-    else:
-        session['browsing_index'] = next_index
-    return render_template('result.html', result=result, explanation=question['explanation'], score=session.get('browsing_final_score' if is_last else 'browsing_score', 0), is_last=is_last, complete_url='/complete_browsing', continue_url='/browsing/quiz')
-
-@app.route('/complete_browsing')
-def complete_browsing():
-    score = session.get('browsing_final_score', 0)
-    return render_template('complete.html', score=score, retry_url='/browsing/quiz', next_url='/privacy')
+def make_quiz_view(name, config):
+    def view():
+        index = session.get(f'{name}_index', 0)
+        question = config['questions'][index]
+        return render_template(
+            config['quiz_template'],
+            question=question,
+            score=session.get(f'{name}_score', 0),
+            question_number=index + 1,
+            total_questions=len(config['questions']),
+        )
+    return view
 
 
-@app.route('/privacy')
-def privacy_lesson():
-    return render_template('privacy_lesson.html')
+def make_check_view(name, config):
+    def view():
+        questions_list = config['questions']
+        index = session.get(f'{name}_index', 0)
+        question = questions_list[index]
+        if request.form['answer'] == question['answer']:
+            result = 'Correct'
+            session[f'{name}_score'] = session.get(f'{name}_score', 0) + 10
+        else:
+            result = 'Wrong'
 
-@app.route('/privacy/quiz')
-def privacy():
-    index = session.get('privacy_index', 0)
-    question = privacy_questions[index]
-    return render_template('privacy.html', question=question, score=session.get('privacy_score', 0), question_number=index+1, total_questions=len(privacy_questions))
+        next_index = index + 1
+        is_last = next_index == len(questions_list)
+        if is_last:
+            session[f'{name}_final_score'] = session.get(f'{name}_score', 0)
+            session[f'{name}_index'] = 0
+            session[f'{name}_score'] = 0
+        else:
+            session[f'{name}_index'] = next_index
 
-@app.route('/check_privacy', methods=['POST'])
-def check_privacy():
-    index = session.get('privacy_index', 0)
-    question = privacy_questions[index]
-    if request.form['answer'] == question['answer']:
-        result = 'Correct'
-        score = session.get('privacy_score', 0)
-        score = score + 10
-        session['privacy_score'] = score
-    else:
-        result = 'Wrong'
-    next_index = index + 1
-    is_last = next_index == len(privacy_questions)
-    if is_last:
-        session['privacy_final_score'] = session.get('privacy_score', 0)
-        session['privacy_index'] = 0
-        session['privacy_score'] = 0
-    else:
-        session['privacy_index'] = next_index
-    return render_template('result.html', result=result, explanation=question['explanation'], score=session.get('privacy_final_score' if is_last else 'privacy_score', 0), is_last=is_last, complete_url='/complete_privacy', continue_url='/privacy/quiz')
+        score = session.get(f'{name}_final_score' if is_last else f'{name}_score', 0)
+        return render_template(
+            'result.html',
+            result=result,
+            explanation=question['explanation'],
+            score=score,
+            is_last=is_last,
+            complete_url=config['complete_url'],
+            continue_url=config['quiz_url'],
+        )
+    return view
 
-@app.route('/complete_privacy')
-def complete_privacy():
-    score = session.get('privacy_final_score', 0)
-    return render_template('complete.html', score=score, retry_url='/privacy/quiz', next_url='/social')
 
-@app.route('/social')
-def social_lesson():
-    return render_template('social_lesson.html')
+def make_complete_view(name, config):
+    def view():
+        score = session.get(f'{name}_final_score', 0)
+        return render_template(
+            'complete.html',
+            score=score,
+            retry_url=config['quiz_url'],
+            next_url=config['next_url'],
+            module=name,
+        )
+    return view
 
-@app.route('/social/quiz')
-def social():
-    index = session.get('social_index', 0)
-    question = social_engineering_questions[index]
-    return render_template('social.html', question=question, score=session.get('social_score', 0), question_number=index+1, total_questions=len(social_engineering_questions))
 
-@app.route('/check_social', methods=['POST'])
-def check_social():
-    index = session.get('social_index', 0)
-    question = social_engineering_questions[index]
-    if request.form['answer'] == question['answer']:
-        result = 'Correct'
-        score = session.get('social_score', 0)
-        score = score + 10
-        session['social_score'] = score
-    else:
-        result = 'Wrong'
-    next_index = index + 1
-    is_last = next_index == len(social_engineering_questions)
-    if is_last:
-        session['social_final_score'] = session.get('social_score', 0)
-        session['social_index'] = 0
-        session['social_score'] = 0
-    else:
-        session['social_index'] = next_index
-    return render_template('result.html', result=result, explanation=question['explanation'], score=session.get('social_final_score' if is_last else 'social_score', 0), is_last=is_last, complete_url='/complete_social', continue_url='/social/quiz')
-
-@app.route('/complete_social')
-def complete_social():
-    score = session.get('social_final_score', 0)
-    return render_template('complete.html', score=score, retry_url='/social/quiz', next_url='/')
+for module_name, module_config in MODULES.items():
+    app.add_url_rule(module_config['lesson_url'], f'{module_name}_lesson', make_lesson_view(module_config))
+    app.add_url_rule(module_config['quiz_url'], f'{module_name}_quiz', make_quiz_view(module_name, module_config))
+    app.add_url_rule(module_config['check_url'], f'{module_name}_check', make_check_view(module_name, module_config), methods=['POST'])
+    app.add_url_rule(module_config['complete_url'], f'{module_name}_complete', make_complete_view(module_name, module_config))
 
 
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
+
 
 @app.route('/modules')
 def modules():
@@ -344,7 +288,4 @@ def modules():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
+    app.run(debug=os.environ.get('FLASK_DEBUG') == '1')

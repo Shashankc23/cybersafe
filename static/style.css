@@ -356,88 +356,88 @@ footer a:hover { color: white; }
 }
 
 /* ─── DARK MODE ─── */
-body.dark {
+html.dark body {
     background-color: #0f0f0f;
     color: #f1f1f1;
 }
 
-body.dark nav {
+html.dark nav {
     background-color: #181818;
     border-bottom-color: #333;
 }
 
-body.dark nav a { color: #aaaaaa; }
-body.dark nav a:hover {
+html.dark nav a { color: #aaaaaa; }
+html.dark nav a:hover {
     background-color: #303030;
     color: #3ea6ff;
 }
 
-body.dark .nav-brand { color: #3ea6ff; }
+html.dark .nav-brand { color: #3ea6ff; }
 
-body.dark h1 { color: #3ea6ff; }
-body.dark h2 { color: #f1f1f1; }
-body.dark h3 { color: #3ea6ff; }
-body.dark p { color: #aaaaaa; }
+html.dark h1 { color: #3ea6ff; }
+html.dark h2 { color: #f1f1f1; }
+html.dark h3 { color: #3ea6ff; }
+html.dark p { color: #aaaaaa; }
 
-body.dark .card { background-color: #212121; }
+html.dark .card { background-color: #212121; }
 
-body.dark .lesson-card {
+html.dark .lesson-card {
     background-color: #212121;
     border-left-color: #3ea6ff;
 }
 
-body.dark .lesson-card h2,
-body.dark .lesson-card h3 { color: #3ea6ff; }
-body.dark .lesson-card li { color: #aaaaaa; }
+html.dark .lesson-card h2,
+html.dark .lesson-card h3 { color: #3ea6ff; }
+html.dark .lesson-card li { color: #aaaaaa; }
 
-body.dark pre {
+html.dark pre {
     background-color: #212121;
     color: #f1f1f1;
     border-left-color: #3ea6ff;
 }
 
-body.dark #theme-toggle {
+html.dark #theme-toggle {
     background-color: #212121;
     border-color: #3ea6ff;
     color: #f1f1f1;
 }
 
-body.dark footer { background-color: #000000; }
+html.dark footer { background-color: #000000; }
 
-body.dark #mascot { mix-blend-mode: normal; }
+html.dark #mascot { mix-blend-mode: normal; }
 
-body.dark .tip-box {
+html.dark .tip-box {
     background: #1e1e1e;    
     color: #f1f1f1;
 }
 
-body.dark .quiz-btn-outline {
+html.dark .quiz-btn-outline {
     background: #212121;
     color: #3ea6ff;
     border-color: #3ea6ff;
 }
 
-body.dark .badge {
+html.dark .badge {
     background: #212121;
     color: #3ea6ff;
 }
 
-body.dark .email-card {
+html.dark .email-card {
     background: #1e1e1e !important;
     border-color: #333 !important;
 }
 
-body.dark .email-card,
-body.dark .email-card * {
+html.dark .email-card,
+html.dark .email-card * {
     color: #f1f1f1 !important;
 }
 
-body.dark .result-box {
+html.dark .result-box {
     background: #1e1e1e !important;
     border-color: #333 !important;
     color: #f1f1f1 !important;
 }
 
-body.dark .result-box p {
+html.dark .result-box p {
     color: #f1f1f1 !important;
 }
