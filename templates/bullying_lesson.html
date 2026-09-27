@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 40px; text-align: center;">
+        <span class="module-context-badge">Module 7 of 9</span>
+        <h1>🛡️ Cyberbullying</h1>
+        <h2>Be Kind, Get Help!</h2>
+        <p>Learn how to spot cyberbullying and what to do if it happens to you or someone else.</p>
+    </div>
+
+    <div class="lesson-slides" id="bullying-slides">
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🚫</div>
+            <h2>Don't Fight Back</h2>
+            <p>
+                It's tempting to send a mean reply back, but that usually just
+                makes things worse. The best move is to block the person, not
+                battle them.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Block first, don't reply. Fighting back rarely helps.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🗣️</div>
+            <h2>Always Tell a Trusted Adult</h2>
+            <p>
+                You never have to deal with a bully by yourself. Telling a parent,
+                teacher, or trusted adult isn't tattling — it's asking for backup.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Screenshot the message, then show a trusted adult.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🤝</div>
+            <h2>Don't Join In</h2>
+            <p>
+                If a group chat starts making fun of someone, staying quiet and
+                joining in still hurts that person. Leaving the chat and telling an
+                adult helps stop it.
+            </p>
+            <div class="tip-box">
+                <strong>⚠️ Watch Out</strong><br>
+                "Everyone else is doing it" is never a good reason to join in.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">💛</div>
+            <h2>Bonus: Be an Upstander, Not a Bystander</h2>
+            <p>
+                A bystander watches bullying happen and does nothing. An upstander
+                speaks up, supports the person being bullied, or gets an adult
+                involved. Being an upstander takes courage — but it makes a huge difference.
+            </p>
+            <div class="tip-box">
+                <strong>🏆 Pro move</strong><br>
+                If you see it happening to someone else, a quick private message
+                like "that wasn't cool, are you okay?" can mean a lot.
+            </div>
+        </div>
+
+        <div class="lesson-dots"></div>
+        <div class="lesson-nav">
+            <button class="lesson-prev quiz-btn quiz-btn-outline" style="width: auto;">← Back</button>
+            <span class="lesson-counter"></span>
+            <button class="lesson-next quiz-btn" style="width: auto;">Next →</button>
+            <a href="/bullying/quiz" class="btn-link lesson-start" style="display: none;">I'm Ready! Let's Go! 🕵️</a>
+        </div>
+
+    </div>
+
+</div>
+<script>initLessonSlides('bullying-slides')</script>
+{% endblock %}

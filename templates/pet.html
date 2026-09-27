@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 10px; text-align: center;">
+        <h1>🐾 Your Pet</h1>
+        <p>Answer quiz questions correctly to earn XP. <span id="pet-name-display">Byte</span> grows right alongside you — click to say hi!</p>
+    </div>
+
+    <div class="lesson-card" style="border-left: none; text-align: center; padding: 44px;">
+        <div id="pet-stage-name" style="font-weight: 800; color: #0057ff; font-size: 1.35em; margin-bottom: 6px;"></div>
+        <div id="pet-level-text" style="color: #888; font-size: 13px; margin-bottom: 18px;"></div>
+
+        <div class="pet-ring-wrap" id="pet-click-area">
+            <svg viewBox="0 0 220 220">
+                <defs>
+                    <linearGradient id="pet-ring-grad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#0057ff"/>
+                        <stop offset="100%" stop-color="#5d2cff"/>
+                    </linearGradient>
+                </defs>
+                <circle class="pet-ring-bg" cx="110" cy="110" r="100"></circle>
+                <circle id="pet-ring-fill" class="pet-ring-fill" cx="110" cy="110" r="100"></circle>
+            </svg>
+            <img id="pet-image" class="pet-ring-image" src="{{ url_for('static', filename='byte_pet.png') }}">
+        </div>
+
+        <p id="pet-blurb" style="max-width: 420px; margin: 0 auto 16px auto; color: #555;"></p>
+        <div id="pet-xp-text" style="font-weight: 700; color: #0057ff; font-size: 15px; margin-bottom: 6px;"></div>
+        <div id="pet-next-text" style="color: #888; font-size: 13px; margin-bottom: 20px;"></div>
+
+        <div style="display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <input id="pet-name-input" type="text" maxlength="20" placeholder="Name your pet" style="padding: 10px 16px; border-radius: 999px; border: 2px solid #e8eef8; font-family: inherit; font-size: 14px; width: 180px;">
+            <button onclick="handleRenamePet()" class="quiz-btn quiz-btn-outline" style="width: auto; padding: 10px 20px; font-size: 14px;">Save Name</button>
+        </div>
+    </div>
+
+    <!-- Skill Stats -->
+    <h2 style="text-align: center; margin: 70px 0 24px 0;">Skill Stats</h2>
+    <div class="lesson-card" style="border-left: none;">
+        <div id="skill-stats-list"></div>
+    </div>
+
+    <!-- Level Roadmap -->
+    <h2 style="text-align: center; margin: 70px 0 24px 0;">Level Roadmap</h2>
+    <div class="pet-roadmap" id="pet-roadmap"></div>
+
+</div>
+
+<script>
+    function renderPet() {
+        const xp = getTotalXP()
+        const maxXp = getMaxXP()
+        const stage = getPetStage(xp)
+        const stageIndex = PET_STAGES.indexOf(stage)
+        const nextStage = PET_STAGES[stageIndex + 1]
+        const name = getPetName()
+
+        document.getElementById('pet-name-display').textContent = name
+        document.getElementById('pet-stage-name').textContent = '✨ ' + name + ' — ' + stage.name
+        document.getElementById('pet-level-text').textContent = 'Level ' + (stageIndex + 1) + ' of ' + PET_STAGES.length
+        document.getElementById('pet-blurb').textContent = stage.blurb
+        document.getElementById('pet-xp-text').textContent = '⭐ ' + xp + ' / ' + maxXp + ' XP'
+        document.getElementById('pet-next-text').textContent = nextStage
+            ? (nextStage.minXP - xp) + ' XP until ' + nextStage.name
+            : name + ' has reached max level!'
+        document.getElementById('pet-name-input').value = name === 'Byte' ? '' : name
+        document.getElementById('pet-name-input').placeholder = name === 'Byte' ? 'Name your pet' : name
+
+        const circumference = 2 * Math.PI * 100
+        const ringFill = document.getElementById('pet-ring-fill')
+        const pct = Math.min(1, xp / maxXp)
+        ringFill.style.strokeDasharray = circumference
+        ringFill.style.strokeDashoffset = circumference * (1 - pct)
+
+        const img = document.getElementById('pet-image')
+        img.style.setProperty('--pet-scale', stage.scale)
+        img.style.filter = 'drop-shadow(' + stage.glow + ')'
+
+        renderSkillStats()
+        renderRoadmap(stageIndex)
+    }
+
+    function renderSkillStats() {
+        const progress = getProgress()
+        const list = document.getElementById('skill-stats-list')
+        list.innerHTML = ''
+        MODULE_ORDER.forEach(function (key) {
+            const meta = MODULE_META[key]
+            const score = progress[key] || 0
+            const pct = Math.round((score / MAX_SCORE_PER_MODULE) * 100)
+            const row = document.createElement('div')
+            row.style.cssText = 'margin-bottom: 16px;'
+            row.innerHTML =
+                '<div style="display:flex; justify-content:space-between; font-size:14px; font-weight:600; margin-bottom:6px;">' +
+                '<span>' + meta.icon + ' ' + meta.label + '</span><span style="color:#888;">' + score + '/50</span></div>' +
+                '<div style="background:#e8eef8; border-radius:50px; height:8px; overflow:hidden;">' +
+                '<div style="background:linear-gradient(90deg,#0057ff,#5d2cff); height:100%; width:' + pct + '%; border-radius:50px; transition:width .5s ease;"></div></div>'
+            list.appendChild(row)
+        })
+    }
+
+    function renderRoadmap(currentStageIndex) {
+        const roadmap = document.getElementById('pet-roadmap')
+        roadmap.innerHTML = ''
+        PET_STAGES.forEach(function (stage, i) {
+            const reached = i <= currentStageIndex
+            const item = document.createElement('div')
+            item.className = 'roadmap-item' + (reached ? ' roadmap-item-done' : '')
+            item.innerHTML =
+                '<div class="roadmap-dot">' + (reached ? '✓' : (i + 1)) + '</div>' +
+                '<div class="roadmap-label">' + stage.name + '</div>' +
+                '<div class="roadmap-xp">' + stage.minXP + ' XP</div>'
+            roadmap.appendChild(item)
+        })
+    }
+
+    function handleRenamePet() {
+        const input = document.getElementById('pet-name-input')
+        if (input.value.trim()) {
+            setPetName(input.value)
+            renderPet()
+        }
+    }
+
+    document.getElementById('pet-click-area').addEventListener('click', function (e) {
+        const heart = document.createElement('div')
+        heart.textContent = ['💙', '✨', '⭐'][Math.floor(Math.random() * 3)]
+        heart.className = 'pet-heart-pop'
+        const rect = e.currentTarget.getBoundingClientRect()
+        heart.style.left = (e.clientX - rect.left) + 'px'
+        heart.style.top = (e.clientY - rect.top) + 'px'
+        e.currentTarget.appendChild(heart)
+        setTimeout(function () { heart.remove() }, 900)
+
+        const img = document.getElementById('pet-image')
+        img.classList.remove('pet-pet-bounce')
+        void img.offsetWidth
+        img.classList.add('pet-pet-bounce')
+    })
+
+    document.addEventListener('DOMContentLoaded', renderPet)
+    window.addEventListener('pageshow', renderPet)
+</script>
+{% endblock %}

@@ -15,7 +15,8 @@
 
         {% if result == "Correct" %}
 
-            <div style="font-size:72px;">🎉</div>
+            <img src="{{ url_for('static', filename='byte_pet.png') }}" style="width:90px; margin-bottom:6px; animation: popIn .5s ease both, bounce 1.2s ease 0.5s infinite;">
+            <div style="font-size:44px;">🎉</div>
 
             <h1 style="margin:12px 0 6px 0; color:#2ea043;">
                 Correct!
@@ -23,6 +24,9 @@
 
             <p style="color:#666; margin-bottom:28px;">
                 Nice work! You spotted the scam correctly.
+                {% if streak and streak >= 2 %}
+                    <br><strong style="color:#f59e0b;">🔥 {{ streak }} in a row!</strong>
+                {% endif %}
             </p>
 
             <div style="
@@ -44,7 +48,8 @@
 
         {% else %}
 
-            <div style="font-size:72px;">❌</div>
+            <img src="{{ url_for('static', filename='byte_pet.png') }}" style="width:90px; margin-bottom:6px; filter: grayscale(40%); animation: shake .5s ease both;">
+            <div style="font-size:44px;">❌</div>
 
             <h1 style="margin:12px 0 6px 0; color:#d93025;">
                 Not Quite

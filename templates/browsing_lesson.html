@@ -3,82 +3,94 @@
 {% block content %}
 <div class="container">
 
-    <!-- Header -->
-    <div style="padding-top: 60px; margin-bottom: 50px; text-align: center;">
+    <div style="padding-top: 60px; margin-bottom: 40px; text-align: center;">
+        <span class="module-context-badge">Module 3 of 9</span>
         <h1>🌐 Safe Browsing</h1>
         <h2>Stay Sharp Online!</h2>
-        <p>Learn three simple habits that can help you browse the internet safely and avoid common online traps.</p>
+        <p>Learn the habits that help you browse the internet safely.</p>
     </div>
 
-    <!-- Thing 1 -->
-    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
-        <h2>🔍 Thing 1: Always Check the Address Bar</h2>
+    <div class="lesson-slides" id="browsing-slides">
 
-        <p>
-            Scammers build websites that look almost identical to real ones,
-            using the same logos, colors, and layouts.
-        </p>
-
-        <p>
-            The address bar is often the easiest way to spot the fake.
-        </p>
-
-        <div class="tip-box">
-            <strong>💡 Remember</strong><br>
-            <strong>Real:</strong> <code>roblox.com</code><br>
-            <strong>Fake:</strong> <code>roblox-play-now.info</code><br><br>
-
-            Always make sure the website address matches the company you're trying to visit.
+        <div class="lesson-slide">
+            <div class="slide-icon">🔍</div>
+            <h2>Always Check the Address Bar</h2>
+            <p>
+                Scammers build websites that look almost identical to real ones,
+                using the same logos, colors, and layouts.
+            </p>
+            <p>
+                The address bar is often the easiest way to spot the fake — copy the
+                look, but they can't copy the real web address.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                <strong>Real:</strong> <code>roblox.com</code><br>
+                <strong>Fake:</strong> <code>roblox-play-now.info</code><br><br>
+                Always make sure the address matches the company you're trying to visit.
+            </div>
         </div>
-    </div>
 
-    <!-- Thing 2 -->
-    <div class="lesson-card" style="padding: 32px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
-        <h2>🔒 Thing 2: Look for the Little Padlock</h2>
-
-        <p>
-            Safe websites usually begin with
-            <strong>https://</strong> and show a small padlock icon next to the address.
-        </p>
-
-        <p>
-            Think of the padlock like a locked diary — it means no one else can peek
-            at what you type while it travels to the website.
-        </p>
-
-        <div class="tip-box">
-            <strong>💡 Remember</strong><br>
-            Look for the padlock 🔒 before typing in passwords or personal information.
-            No padlock? Be extra careful.
+        <div class="lesson-slide">
+            <div class="slide-icon">🔒</div>
+            <h2>Look for the Little Padlock</h2>
+            <p>
+                Safe websites usually begin with <strong>https://</strong> and show a
+                small padlock icon next to the address.
+            </p>
+            <p>
+                Think of the padlock like a locked diary — it means no one else can
+                peek at what you type while it travels to the website.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Look for the padlock 🔒 before typing in passwords or personal
+                information. No padlock? Be extra careful.
+            </div>
         </div>
-    </div>
 
-    <!-- Thing 3 -->
-    <div class="lesson-card" style="padding: 32px; margin-bottom: 50px; box-shadow: 0 10px 25px rgba(0,0,0,.05); border-left: none;">
-        <h2>🚨 Thing 3: Watch Out for Downloads and Fake Pop-ups</h2>
-
-        <p>
-            Some websites try to scare or trick you into downloading harmful software.
-        </p>
-
-        <ul>
-            <li>A file starts downloading without you clicking anything.</li>
-            <li>A pop-up says <strong>"Virus Detected! Call this number now!"</strong></li>
-        </ul>
-
-        <div class="tip-box">
-            <strong>⚠️ Watch Out</strong><br>
-            Close the tab, don't open unexpected downloads,
-            and tell a trusted adult if something seems suspicious.
+        <div class="lesson-slide">
+            <div class="slide-icon">🚨</div>
+            <h2>Watch Out for Downloads and Fake Pop-ups</h2>
+            <p>
+                Some websites try to scare or trick you into downloading harmful software.
+            </p>
+            <ul>
+                <li>A file starts downloading without you clicking anything.</li>
+                <li>A pop-up says <strong>"Virus Detected! Call this number now!"</strong></li>
+            </ul>
+            <div class="tip-box">
+                <strong>⚠️ Watch Out</strong><br>
+                Close the tab, don't open unexpected downloads, and tell a trusted
+                adult if something seems suspicious.
+            </div>
         </div>
-    </div>
 
-    <!-- Button -->
-    <div style="text-align: center; margin-bottom: 80px;">
-        <a href="/browsing/quiz" class="btn-link">
-            I'm Ready! Let's Go! 🕵️
-        </a>
+        <div class="lesson-slide">
+            <div class="slide-icon">🧩</div>
+            <h2>Bonus: Ads That Look Like Buttons</h2>
+            <p>
+                On some free game or movie sites, ads are made to look exactly like
+                a big green "Download" or "Play" button — but clicking it takes you
+                to a totally different, sketchy site.
+            </p>
+            <div class="tip-box">
+                <strong>🏆 Pro move</strong><br>
+                Look for the tiny word "Ad" near a button before clicking it. When in
+                doubt, don't click — find the real button on the actual page.
+            </div>
+        </div>
+
+        <div class="lesson-dots"></div>
+        <div class="lesson-nav">
+            <button class="lesson-prev quiz-btn quiz-btn-outline" style="width: auto;">← Back</button>
+            <span class="lesson-counter"></span>
+            <button class="lesson-next quiz-btn" style="width: auto;">Next →</button>
+            <a href="/browsing/quiz" class="btn-link lesson-start" style="display: none;">I'm Ready! Let's Go! 🕵️</a>
+        </div>
+
     </div>
 
 </div>
+<script>initLessonSlides('browsing-slides')</script>
 {% endblock %}

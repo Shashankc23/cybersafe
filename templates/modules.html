@@ -3,70 +3,146 @@
 {% block content %}
 <div class="container">
 
-    <div style="padding-top: 60px; margin-bottom: 24px;">
+    <div style="padding-top: 60px; margin-bottom: 30px; text-align: center;">
         <h1>Choose a Module</h1>
-        <p>Pick a topic below and build the skills you need to stay safe online.</p>
+        <p style="max-width: 480px; margin: 0 auto;">Pick a topic below and build the skills you need to stay safe online.</p>
     </div>
 
-    <div id="xp-banner" style="background:#eef3ff; border-radius:14px; padding:16px 20px; margin-bottom:30px; font-weight:700; color:#0057ff;">
-        ⭐ Total XP: <span id="xp-count">0</span> / <span id="xp-max">250</span>
+    <div class="progress-summary">
+        <div class="progress-summary-stat">
+            <div id="modules-done">0</div>
+            <span>of 9 modules complete</span>
+        </div>
+        <div class="progress-summary-bar-wrap">
+            <div class="progress-summary-bar">
+                <div id="xp-summary-fill" class="progress-summary-fill"></div>
+            </div>
+            <div class="progress-summary-label">⭐ <span id="xp-count">0</span> / <span id="xp-max">450</span> XP</div>
+        </div>
     </div>
 
-    <a href="/phishing" class="lesson-card" data-module="phishing" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
-        <div>
-            <h2>🪝 Phishing <span class="module-badge"></span></h2>
-            <p style="margin: 0;">Spot fake emails, scam texts, and suspicious websites before they fool you.</p>
-        </div>
-        <span style="font-size: 1.5em; color: #0057ff;">→</span>
-    </a>
+    <div class="module-grid">
+        <a href="/phishing" class="module-card" data-module="phishing">
+            <div class="module-card-top">
+                <div class="module-icon">🪝</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Phishing</h2>
+            <p>Spot fake emails, scam texts, and suspicious websites before they fool you.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
 
-    <a href="/passwords" class="lesson-card" data-module="password" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
-        <div>
-            <h2>🔐 Passwords <span class="module-badge"></span></h2>
-            <p style="margin: 0;">Learn how to create strong passwords and protect every account you use.</p>
-        </div>
-        <span style="font-size: 1.5em; color: #0057ff;">→</span>
-    </a>
+        <a href="/passwords" class="module-card" data-module="password">
+            <div class="module-card-top">
+                <div class="module-icon">🔐</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Passwords</h2>
+            <p>Learn how to create strong passwords and protect every account you use.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
 
-    <a href="/browsing" class="lesson-card" data-module="browsing" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
-        <div>
-            <h2>🌐 Safe Browsing <span class="module-badge"></span></h2>
-            <p style="margin: 0;">Browse the internet safely by recognizing risky websites and downloads.</p>
-        </div>
-        <span style="font-size: 1.5em; color: #0057ff;">→</span>
-    </a>
+        <a href="/browsing" class="module-card" data-module="browsing">
+            <div class="module-card-top">
+                <div class="module-icon">🌐</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Safe Browsing</h2>
+            <p>Browse the internet safely by recognizing risky websites and downloads.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
 
-    <a href="/privacy" class="lesson-card" data-module="privacy" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
-        <div>
-            <h2>👁️ Privacy <span class="module-badge"></span></h2>
-            <p style="margin: 0;">Protect your personal information and control what you share online.</p>
-        </div>
-        <span style="font-size: 1.5em; color: #0057ff;">→</span>
-    </a>
+        <a href="/privacy" class="module-card" data-module="privacy">
+            <div class="module-card-top">
+                <div class="module-icon">👁️</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Privacy</h2>
+            <p>Protect your personal information and control what you share online.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
 
-    <a href="/social" class="lesson-card" data-module="social" style="display: flex; justify-content: space-between; align-items: center; padding: 28px; border-radius: 18px; border-left: none; margin-bottom: 16px;">
-        <div>
-            <h2>🎭 Social Engineering <span class="module-badge"></span></h2>
-            <p style="margin: 0;">Recognize manipulation tactics scammers use to gain your trust.</p>
-        </div>
-        <span style="font-size: 1.5em; color: #0057ff;">→</span>
-    </a>
+        <a href="/social" class="module-card" data-module="social">
+            <div class="module-card-top">
+                <div class="module-icon">🎭</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Social Engineering</h2>
+            <p>Recognize manipulation tactics scammers use to gain your trust.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
+
+        <a href="/footprint" class="module-card" data-module="footprint">
+            <div class="module-card-top">
+                <div class="module-icon">👣</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Digital Footprint</h2>
+            <p>Learn why what you post online can stick around forever.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
+
+        <a href="/bullying" class="module-card" data-module="bullying">
+            <div class="module-card-top">
+                <div class="module-icon">🛡️</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Cyberbullying</h2>
+            <p>Know what to do if someone is mean to you or a friend online.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
+
+        <a href="/gaming" class="module-card" data-module="gaming">
+            <div class="module-card-top">
+                <div class="module-icon">🎮</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Gaming Safety</h2>
+            <p>Spot the scams and tricks that specifically target gamers.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
+
+        <a href="/twofactor" class="module-card" data-module="twofactor">
+            <div class="module-card-top">
+                <div class="module-icon">🔑</div>
+                <div class="module-progress-ring" data-ring></div>
+            </div>
+            <h2>Two-Factor Authentication</h2>
+            <p>Add a second lock to your most important accounts.</p>
+            <span class="module-cta">Start module →</span>
+        </a>
+    </div>
 
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('xp-count').textContent = getTotalXP()
-        document.getElementById('xp-max').textContent = getMaxXP()
+    function renderModulesProgress() {
+        var xp = getTotalXP()
+        var maxXp = getMaxXP()
+        document.getElementById('xp-count').textContent = xp
+        document.getElementById('xp-max').textContent = maxXp
+        document.getElementById('xp-summary-fill').style.width = Math.min(100, (xp / maxXp) * 100) + '%'
 
         var progress = getProgress()
+        document.getElementById('modules-done').textContent = getCompletedCount()
+
         document.querySelectorAll('[data-module]').forEach(function (el) {
             var key = el.getAttribute('data-module')
-            var badge = el.querySelector('.module-badge')
-            if (progress[key] !== undefined) {
-                badge.textContent = '✅ ' + progress[key] + '/50'
-                badge.style.cssText = 'background:#e6f9ee;color:#16a34a;padding:3px 10px;border-radius:999px;font-size:12px;margin-left:8px;vertical-align:middle;'
+            var ring = el.querySelector('[data-ring]')
+            var score = progress[key]
+            if (score !== undefined) {
+                var pct = Math.round((score / 50) * 100)
+                ring.style.background = 'conic-gradient(#16a34a ' + pct + '%, #e8eef8 ' + pct + '%)'
+                ring.textContent = pct === 100 ? '✅' : pct + '%'
+                el.classList.add('module-card-done')
+            } else {
+                ring.style.background = '#e8eef8'
+                ring.textContent = ''
+                el.classList.remove('module-card-done')
             }
         })
-    })
+    }
+
+    document.addEventListener('DOMContentLoaded', renderModulesProgress)
+    window.addEventListener('pageshow', renderModulesProgress)
 </script>
 {% endblock %}

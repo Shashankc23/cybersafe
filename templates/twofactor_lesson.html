@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 40px; text-align: center;">
+        <span class="module-context-badge">Module 9 of 9</span>
+        <h1>🔑 Two-Factor Authentication</h1>
+        <h2>A Second Lock on the Door!</h2>
+        <p>Learn about the single best upgrade you can make to any account.</p>
+    </div>
+
+    <div class="lesson-slides" id="twofactor-slides">
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🔐</div>
+            <h2>What Is 2FA?</h2>
+            <p>
+                Two-factor authentication (2FA) means logging in needs two things:
+                your password, and a second code — usually sent to your phone or
+                made by an app.
+            </p>
+            <p>
+                Even if a hacker steals your password, they still can't get in
+                without that second code.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Turn on 2FA anywhere it's offered, especially on your email and
+                gaming accounts.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">📱</div>
+            <h2>Apps Are Better Than Texts</h2>
+            <p>
+                2FA codes can come by text message or through an authenticator app
+                on your phone. Authenticator apps are generally the safer option,
+                since text messages can sometimes be intercepted.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                If an app gives you the choice, pick an authenticator app over text
+                messages when you can.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🚫</div>
+            <h2>Never Share a 2FA Code</h2>
+            <p>
+                A 2FA code that pops up unexpectedly usually means someone else
+                already has your password and is trying to log in right now.
+            </p>
+            <div class="tip-box">
+                <strong>⚠️ Watch Out</strong><br>
+                Never share a 2FA code with anyone, ever — not "support," not a
+                friend, nobody. If one shows up that you didn't ask for, change your
+                password immediately.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🗝️</div>
+            <h2>Bonus: Protect Your Email First</h2>
+            <p>
+                Your email is often the master key to your other accounts — most
+                sites let you reset a password just by emailing you a link. That
+                makes your email the most important account to protect with 2FA.
+            </p>
+            <div class="tip-box">
+                <strong>🏆 Pro move</strong><br>
+                If you can only turn on 2FA for one account, make it your email.
+            </div>
+        </div>
+
+        <div class="lesson-dots"></div>
+        <div class="lesson-nav">
+            <button class="lesson-prev quiz-btn quiz-btn-outline" style="width: auto;">← Back</button>
+            <span class="lesson-counter"></span>
+            <button class="lesson-next quiz-btn" style="width: auto;">Next →</button>
+            <a href="/twofactor/quiz" class="btn-link lesson-start" style="display: none;">I'm Ready! Let's Go! 🕵️</a>
+        </div>
+
+    </div>
+
+</div>
+<script>initLessonSlides('twofactor-slides')</script>
+{% endblock %}

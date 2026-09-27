@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 40px; text-align: center;">
+        <span class="module-context-badge">Module 8 of 9</span>
+        <h1>🎮 Gaming Safety</h1>
+        <h2>Play Smart, Stay Safe!</h2>
+        <p>Learn how to spot the scams and tricks that target gamers.</p>
+    </div>
+
+    <div class="lesson-slides" id="gaming-slides">
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🔑</div>
+            <h2>Never Trade Your Login</h2>
+            <p>
+                No trade, rare skin, or "verification" is ever worth your account
+                password. Scammers love offering amazing deals that require your
+                login to "prove" something.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Nobody legitimate — not a trader, not "support," not even a friend —
+                ever needs your account password.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">💸</div>
+            <h2>Skip the Cheap Currency Sites</h2>
+            <p>
+                Third-party websites selling in-game currency for way less than the
+                official store are almost always scams. They either steal your
+                payment info or your account.
+            </p>
+            <div class="tip-box">
+                <strong>⚠️ Watch Out</strong><br>
+                Always buy in-game currency or items through the official store —
+                even if it costs a little more.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🎁</div>
+            <h2>"Special Tools" Are Usually Malware</h2>
+            <p>
+                Strangers offering aim-assist tools, free skins generators, or
+                "boosting" software are one of the most common ways malware ends up
+                on your device.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Only download mods or tools from the game's official site or
+                well-known, trusted sources.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🔇</div>
+            <h2>Bonus: Mute and Report, Don't Engage</h2>
+            <p>
+                If someone in a game is threatening you, being inappropriate, or
+                pressuring you for anything, you don't have to respond. Muting and
+                reporting is faster, safer, and actually gets them dealt with.
+            </p>
+            <div class="tip-box">
+                <strong>🏆 Pro move</strong><br>
+                Arguing back rarely works. Mute, report, and if it feels serious,
+                tell a trusted adult too.
+            </div>
+        </div>
+
+        <div class="lesson-dots"></div>
+        <div class="lesson-nav">
+            <button class="lesson-prev quiz-btn quiz-btn-outline" style="width: auto;">← Back</button>
+            <span class="lesson-counter"></span>
+            <button class="lesson-next quiz-btn" style="width: auto;">Next →</button>
+            <a href="/gaming/quiz" class="btn-link lesson-start" style="display: none;">I'm Ready! Let's Go! 🕵️</a>
+        </div>
+
+    </div>
+
+</div>
+<script>initLessonSlides('gaming-slides')</script>
+{% endblock %}

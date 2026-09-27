@@ -84,5 +84,21 @@
 </div>
 <script>
     saveModuleResult("{{ module }}", {{ score }});
+
+    ;(function confettiBurst() {
+        const colors = ['#0057ff', '#5d2cff', '#16a34a', '#f59e0b', '#ef4444']
+        for (let i = 0; i < 40; i++) {
+            const piece = document.createElement('div')
+            piece.textContent = ['🎉', '✨', '⭐', '💫'][Math.floor(Math.random() * 4)]
+            piece.style.cssText = 'position:fixed; top:-20px; left:' + (Math.random() * 100) + 'vw; font-size:' + (14 + Math.random() * 14) + 'px; z-index:9999; pointer-events:none; opacity:.9;'
+            document.body.appendChild(piece)
+            const duration = 1800 + Math.random() * 1200
+            piece.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: 'translateY(100vh) rotate(' + (Math.random() > 0.5 ? 360 : -360) + 'deg)', opacity: 0 }
+            ], { duration: duration, easing: 'ease-in' })
+            setTimeout(() => piece.remove(), duration)
+        }
+    })()
 </script>
 {% endblock %}

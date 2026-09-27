@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>CyberSafe</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='byte.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo_icon.png') }}">
     <script>
         (function () {
             var theme = localStorage.getItem('theme') || 'light';
@@ -11,33 +11,40 @@
     </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='progress.js') }}"></script>
+    <script src="{{ url_for('static', filename='lessons.js') }}"></script>
 </head>
-<body>
-    <nav>
-        <div class="nav-brand">
-            <img src="{{ url_for('static', filename='byte.png') }}" style="width: 35px; height: 35px;">
-            <span>CyberSafe</span>
+<body class="page-enter">
+    <div id="page-loading-bar"></div>
+    <div id="page-loading-overlay">
+        <div class="loading-track">
+            <img src="{{ url_for('static', filename='byte_pet.png') }}" class="loading-runner" alt="">
         </div>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/phishing">Phishing</a>
-            <a href="/passwords">Passwords</a>
-            <a href="/browsing">Safe Browsing</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/social">Social Engineering</a>
-            <button id="theme-toggle" onclick="toggleTheme()">🌙</button>
+        <div class="loading-text">Loading<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></div>
+    </div>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-brand" aria-label="CyberSafe home">
+                <img src="{{ url_for('static', filename='logo_icon.png') }}" width="30" height="30" style="object-fit: contain;" alt="">
+                <span>CyberSafe</span>
+            </a>
+            <div class="nav-links">
+                <a href="/modules">Modules</a>
+                <a href="/pet">🐾 My Pet</a>
+                <button id="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
         </div>
     </nav>
     {% block content %}
     {% endblock %}
     <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='transitions.js') }}"></script>
     <footer>
     <p>© 2026 CyberSafe. Built to keep kids safe online.</p>
     <p>
         <a href="/">Home</a>
         <a href="/modules">Modules</a>
-        <a href="/phishing">Phishing</a>
-        <a href="/passwords">Passwords</a>
+        <a href="/pet">My Pet</a>
+        <a href="/settings">Settings</a>
     </p>
 </footer>
 </body>

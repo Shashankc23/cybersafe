@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div style="padding-top: 60px; margin-bottom: 40px; text-align: center;">
+        <span class="module-context-badge">Module 6 of 9</span>
+        <h1>👣 Digital Footprint</h1>
+        <h2>Think Before You Post!</h2>
+        <p>Learn why what you post online can stick around way longer than you'd expect.</p>
+    </div>
+
+    <div class="lesson-slides" id="footprint-slides">
+
+        <div class="lesson-slide">
+            <div class="slide-icon">♾️</div>
+            <h2>The Internet Doesn't Forget</h2>
+            <p>
+                Every photo, comment, and video you post leaves a trail called your
+                <strong>digital footprint</strong>. Even if you delete something,
+                people may have already saved, shared, or screenshotted it.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                Before you post, ask: <strong>"Would I be okay with anyone seeing
+                this — forever?"</strong>
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🙋</div>
+            <h2>Ask Before You Post About Others</h2>
+            <p>
+                Posting a funny video of a friend might seem harmless, but it's
+                their moment too. Always ask first — they might not want it online.
+            </p>
+            <div class="tip-box">
+                <strong>💡 Remember</strong><br>
+                If it includes someone else, get their okay before you hit post.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">👀</div>
+            <h2>Check the Background</h2>
+            <p>
+                Photos can accidentally show your school, street sign, or house
+                number in the background. A trusted adult can help you double-check
+                before posting.
+            </p>
+            <div class="tip-box">
+                <strong>⚠️ Watch Out</strong><br>
+                Scan the whole photo — not just the middle — before you share it.
+            </div>
+        </div>
+
+        <div class="lesson-slide">
+            <div class="slide-icon">🎓</div>
+            <h2>Bonus: Future You Is Watching</h2>
+            <p>
+                Colleges, employers, and even coaches sometimes look up people
+                online. What you post as a kid can still show up years later. It
+                doesn't mean don't have fun online — just keep it something you'd
+                be proud of later.
+            </p>
+            <div class="tip-box">
+                <strong>🏆 Pro move</strong><br>
+                Before posting, imagine a teacher or grandparent seeing it. Still okay? Post it.
+            </div>
+        </div>
+
+        <div class="lesson-dots"></div>
+        <div class="lesson-nav">
+            <button class="lesson-prev quiz-btn quiz-btn-outline" style="width: auto;">← Back</button>
+            <span class="lesson-counter"></span>
+            <button class="lesson-next quiz-btn" style="width: auto;">Next →</button>
+            <a href="/footprint/quiz" class="btn-link lesson-start" style="display: none;">I'm Ready! Let's Go! 🕵️</a>
+        </div>
+
+    </div>
+
+</div>
+<script>initLessonSlides('footprint-slides')</script>
+{% endblock %}
